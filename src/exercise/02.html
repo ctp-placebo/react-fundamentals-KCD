@@ -6,24 +6,68 @@
 
   <!-- 🐨 add React and ReactDOM on the page.
        💰 Here are script tags that'll do the job:
+      -->
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
-  -->
 
   <script type="module">
     const rootElement = document.getElementById('root')
 
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    const element = document.createElement('div')
-    element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // This is similar to ReactDOM.createRoot().render()
-    rootElement.append(element)
+    // not in use. 
+    const elemental = React.createElement('div', {
+      className: 'container',
+      children: 'Hello World',
+    })
+    // end not in use
+    // or like this: 
+    const eleme = React.createElement('div', {
+      className: 'container',
+      children: [
+        React.createElement('span', null, 'Hello'),
+        ' ',
+        React.createElement('span', null, 'World'),
+        ' ',
+        React.createElement('h1', null, 'Hello solar system.'),
+      ]
+    })
 
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
-  </script>
+    // bit here is how to do it 3 differnt ways: 
+    const helloElement = React.createElement('span', null, 'Hello')
+    const wurldElement = React.createElement('span', {children: 'World'})
+
+    const elementio = React.createElement('div',{
+      className: 'container',
+    },
+    helloElement,
+    ' ',
+    wurldElement,
+    ' ',
+    React.createElement('span', null, 'Hello solar system.'),
+    ' ',
+    React.createElement('span', {}, 'Hello galaxy.'),
+    )
+    // null and {} are the same thing. You can pass props in here. 
+
+// **** remember to updat the render with the correct const to call
+    // ReactDOM.createRoot(rootElement).render(elemental)
+    ReactDOM.createRoot(rootElement).render(elementio)
+    </script>
 </body>
+
+<script>
+  // You're going to re-implement this code using React!
+  // 💣 So go ahead and delete this implementation (or comment it out for now)
+  // These three lines are similar to React.createElement
+  // const element = document.createElement('div')
+  // element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
+  // element.className = 'container' // 💰 in React, this is also called the "className" prop
+  // This is similar to ReactDOM.createRoot().render()
+  //  rootElement.append(element)
+
+  // 🐨 Please re-implement the regular document.createElement code above
+  // with these React API calls
+  // 💰 The example in the markdown file should be a good hint for you
+</script>
+
+
+

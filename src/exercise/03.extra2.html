@@ -1,0 +1,33 @@
+
+<body>
+    <div id="root"></div>
+
+    <div id="root2"></div>
+
+    <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  
+    <!-- 🐨 add Babel to the page.-->
+    <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  
+    <script type="text/babel">
+  
+      const className = 'container'
+      const children = 'Hullo Wurld'
+      const prawps = {children, className }
+  
+      const element = <div className={prawps.className} style={{color: 'green'}}>{prawps.children}</div>
+
+      const element2 = <div {...prawps} />
+      ReactDOM.createRoot(document.getElementById('root')).render(element)
+      ReactDOM.createRoot(document.getElementById('root2')).render(element2)
+    </script>
+
+    <!-- <script type="text/babel">
+      const children = 'Hello World'
+      const className = 'container'
+      const props = {children, className}
+      const element = <div {...props} />
+      ReactDOM.createRoot(document.getElementById('root')).render(element)
+    </script> -->
+  </body>

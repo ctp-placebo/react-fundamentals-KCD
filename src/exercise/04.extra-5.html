@@ -1,0 +1,49 @@
+<!-- 
+    Runtime validation with PropTypes
+    This part 5 adds React-Fragment, aka <> </>, to the mix.
+-->
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+
+    <!-- we added this for this exercise -->
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+    <script type="text/babel">
+      
+      // Let's change the Message component a little bit. Make it look like this now:
+      function Message({subject, greeting}) {
+        return <div className="message">{greeting}, {subject}</div>
+      }
+
+
+
+      // Object to set the types of dataand validate the props that are passed to the component: 
+      Message.propTypes = {
+        subject: PropTypes.string.isRequired,
+        greeting: PropTypes.string.isRequired,
+      }
+
+      const ailment = (
+                <>
+                    {/* This will work because we pass the props */}
+                    <Message greeting="Hero" subject="Panda!" />  
+                    
+                    <Message greeting="Static" subject="Noise Bird">
+                        {/* This will fail with an error because we DONUT pass the props */}
+                        <Message>
+                            <span style={{color: 'red', marginLeft: 30}}>Nested Message message child.</span> 
+                        </Message>  
+                    </Message>  
+                </>
+            )
+
+
+      ReactDOM.createRoot(document.getElementById('root')).render(ailment)
+    </script>
+  </body>                                                                                           
