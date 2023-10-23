@@ -1,0 +1,47 @@
+<!-- 
+    using a custom component with JSX
+    See if you can change your component function name so people 
+    can use it with JSX more easily!
+-->
+
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+    <script type="text/babel">
+      
+      // 🐨SOlution; make the function name capitalized, and React/Babel 'somehow' 
+      // knows to use it as a component. 
+      // Now it's a Component, and can be used with JSX. Magic Babel passes it a s a ref.
+      function Message({children}) {
+        return <div className="message">{children}</div>
+      }
+
+      const ailment = (
+                <div className="container">
+                    {/* Have to change 'message' to 'Message' */}
+                    {React.createElement(Message, {children: 'Happy World?'})}
+                    {/*  and this won't work without a Capital M  
+                        {message({children: 'Sad World?'})} 
+                    */}
+
+                    {/* But THIS is the result we are looking for. */}
+                    <Message>Ecstatic World!</Message>  
+
+                    {/* amd we can resuse that compnent */}
+                    <Message>I want a child element please, Bob
+                        <Message>
+                            <span style={{color: 'red', marginLeft: 30}}>Nested Message message child.</span> 
+                        </Message>  
+                    </Message>  
+                </div>
+            )
+
+
+      ReactDOM.createRoot(document.getElementById('root')).render(ailment)
+    </script>
+  </body>

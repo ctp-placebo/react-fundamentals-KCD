@@ -1,0 +1,59 @@
+<!-- 
+    Runtime validation with PropTypes
+-->
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+    <script type="text/babel">
+      
+      // Let's change the Message component a little bit. Make it look like this now:
+      function Message({subject, greeting}) {
+        return <div className="message">{greeting}, {subject}</div>
+      }
+
+      // We can use PropTypes to validate the props that are passed to the component.
+      // *********
+      // NB: ONLY works in development mode. Production mode React either removes the checks or replaces them with a warning.
+      // *********
+
+      const PropTypes = {
+        string(props, propName, componentName) {
+            if (props === null || props[propName] === undefined) {
+              // Error string is in backticks, not single or double quotes
+                return new Error(`ya nah got no props mon. CompoentName: ${componentName}, propName: ${propName}`)
+            }
+            if (typeof props[propName] !== 'string') {
+                return new Error("Der wuz errur 'ere")
+            }
+        },
+      }
+
+      // Object to se the types of data: 
+      Message.propTypes = {
+        subject: PropTypes.string,
+        greeting: PropTypes.string,
+      }
+
+      const ailment = (
+                <div className="container">
+                    {/* This will work because we pass the props */}
+                    <Message greeting="Hero" subject="Panda!" />  
+                    
+                    <Message greeting="Static" subject="Noise Bird">
+                        {/* This will fail with an error because we DONUT pass the props */}
+                        <Message>
+                            <span style={{color: 'red', marginLeft: 30}}>Nested Message message child.</span> 
+                        </Message>  
+                    </Message>  
+                </div>
+            )
+
+
+      ReactDOM.createRoot(document.getElementById('root')).render(ailment)
+    </script>
+  </body>                                                                                           

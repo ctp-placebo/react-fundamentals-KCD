@@ -20,7 +20,7 @@ const largeBox = <div>large orange box</div>
 
 function App() {
   return (
-    <div>
+    <div className=''>
       {smallBox}
       {mediumBox}
       {largeBox}
