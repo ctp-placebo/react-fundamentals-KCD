@@ -178,3 +178,32 @@ _____
 
 # Styling  
 
+Using vars to set styles: 
+
+```
+const italic = {fontStyle: 'italic'}
+const blue = {backgroundColor: 'lightblue'}
+
+const smallBox = <div 
+  className={'box box--small'}
+  style={{...blue, ...italic}}>small lightblue box
+  </div>
+const mediumBox = <div 
+  className={'box box--medium'}
+  style={{backgroundColor: "pink", fontStyle: 'italic'}}>medium pink box
+</div>
+const largeBox = <div
+  className={'box box--large'}
+  style={{backgroundColor: "orange", fontStyle: 'italic'}}>large orange box
+</div>
+
+function App() {
+  return (
+    <div className='container'>
+      {smallBox}
+      {mediumBox}
+      {largeBox}
+    </div>
+  )
+}
+```
