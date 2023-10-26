@@ -29,9 +29,15 @@
 .keys #pear-input {
   background-color: #bef171;
 }
+.keys .banana-input,
+.keys [for='banana-input'],
+.keys #banana-input {
+  background-color: #f9f03e;
+}
 .keys #apple-input,
 .keys #orange-input,
 .keys #grape-input,
+.keys #banana-input,
 .keys #pear-input {
   margin-right: 10px;
   margin-left: 10px;
@@ -39,6 +45,7 @@
 .keys [for='apple-input'],
 .keys [for='orange-input'],
 .keys [for='grape-input'],
+.keys [for='banana-input'],
 .keys [for='pear-input'] {
   display: inline-block;
   width: 100px;

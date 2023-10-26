@@ -206,4 +206,22 @@ function App() {
     </div>
   )
 }
-```
+```  
+
+**See exercises/05.extra for solutions and notes.**
+
+For an excellent example of forms styling see 07.js and styles.css where 
+the colour and id for a mapped array is set dynamically.
+_____
+
+# Forms
+
+See individual files.  
+The 06 and extra 1 to 3 files show the different ways of handling forms.
+Including the use of refs, which is not recommended.
+Including the use of a custom hook, which is recommended.
+And a bit of useState, which is also recommended.
+
+# Rendering Arrays
+
+
