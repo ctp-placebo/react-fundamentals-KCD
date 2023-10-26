@@ -10,13 +10,14 @@ function FocusDemo() {
     {id: 'orange', value: '🍊 orange'},
     {id: 'grape', value: '🍇 grape'},
     {id: 'pear', value: '🍐 pear'},
+    {id: 'banana', value: '🍌 banana'},
   ])
 
   const [autoShuffle, setAutoShuffle] = React.useState(true)
 
   React.useEffect(() => {
     if (autoShuffle) {
-      const id = setInterval(() => setItems(shuffle), 1000)
+      const id = setInterval(() => setItems(shuffle), 5000)
       return () => clearInterval(id)
     }
   }, [autoShuffle])
